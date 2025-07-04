@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный Гайд: 3 Шага к Свободе Мысли</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFF7AE; /* Energetic & Playful - Light Yellow */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #00A19D; /* Energetic & Playful - Teal */
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 161, 157, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #007976; /* Darker Teal */
+            transform: translateY(-2px);
+            box-shadow: 0 7px 10px rgba(0, 161, 157, 0.3);
+        }
+        .btn-secondary {
+            background-color: #FFB344; /* Energetic & Playful - Orange */
+            color: #4A2E00; /* Dark Brown for contrast */
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #E0982E; /* Darker Orange */
+            transform: translateY(-2px);
+        }
+        .section-header {
+            color: #4A2E00; /* Dark Brown */
+        }
+        .sticky-nav {
+            background-color: rgba(255, 247, 174, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(10px);
+        }
+        .hidden-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        .visible-section {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .duel-question-text {
+            transition: opacity 0.5s ease;
+        }
+        .error-message {
+            color: #EF4444; /* Tailwind red-500 */
+            font-size: 0.875rem; /* text-sm */
+            margin-top: 0.5rem;
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="sticky top-0 z-50 sticky-nav shadow-md">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-extrabold text-[#007976]">Свобода Мысли</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#step1" class="font-semibold text-gray-600 hover:text-[#00A19D] transition">Шаг 1</a>
+                <a href="#step2" class="font-semibold text-gray-600 hover:text-[#00A19D] transition">Шаг 2</a>
+                <a href="#step3" class="font-semibold text-gray-600 hover:text-[#00A19D] transition">Шаг 3</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 space-y-24">
+        
+        <section id="hero" class="text-center space-y-6 py-16">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-[#4A2E00] leading-tight">Избавься от Вредных Мыслей!</h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">3 Простых Шага к Свободе в Голове</p>
+            <p class="text-md text-gray-500 max-w-2xl mx-auto">Этот интерактивный гайд поможет тебе не просто прочитать, а проделать путь к изменению своих убеждений. Начни прямо сейчас!</p>
+            <a href="#step1" class="inline-block btn-primary text-lg px-10 py-4">Начать трансформацию</a>
+        </section>
+
+        <section id="step1" class="card p-8 md:p-12 space-y-8">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold section-header">Шаг 1: Поймай Мысль</h2>
+                <p class="text-gray-600 mt-3 text-lg">Первый шаг — заметить, что именно тебя стопорит. Научимся ловить негативные мысли "на горячем".</p>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <label for="negative-thought-input" class="block font-semibold text-gray-700 mb-2 text-lg">Какая негативная мысль крутится у тебя в голове?</label>
+                <p class="text-sm text-gray-500 mb-4">Поймай её! Это может быть что-то вроде "У меня ничего не получится" или "Я недостаточно хорош".</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="negative-thought-input" placeholder="Введите мысль здесь..." class="flex-grow w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB344] focus:border-[#FFB344] transition text-lg">
+                    <button id="catch-thought-btn" class="btn-primary text-lg px-8 py-3">Поймать!</button>
+                </div>
+                <p id="error-message" class="error-message">Пожалуйста, введите мысль, чтобы её поймать!</p>
+            </div>
+
+            <div id="step1-details" class="hidden-section space-y-6">
+                <div class="card p-6 border border-gray-200">
+                    <h3 class="font-bold text-xl text-[#00A19D]">💡 Твой Внутренний "Будильник"</h3>
+                    <p class="text-gray-600 mt-2">Когда чувствуешь негатив (тревожно, злишься, грустно), мысленно сделай "СТОП!". Спроси себя: "Что я только что подумал?". Просто заметь эту мысль, не ругай себя.</p>
+                </div>
+                <div class="card p-6 border border-gray-200">
+                    <h3 class="font-bold text-xl text-[#00A19D]">🔍 Найди "Откуда Ноги Растут"</h3>
+                    <p class="text-gray-600 mt-2">Вспомни, откуда эта мысль взялась. Может, родители так говорили? Или учителя? Опыт из детства? Помни: это не железный ФАКТ! Это просто старая программка. Её можно переписать к чертям!</p>
+                </div>
+                <div class="text-center mt-8">
+                    <button onclick="document.getElementById('step2').scrollIntoView({ behavior: 'smooth' });" class="btn-primary text-lg px-10 py-4">Перейти к Шагу 2</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="step2" class="card p-8 md:p-12 space-y-8 opacity-50 pointer-events-none">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold section-header">Шаг 2: Вызови Мысль на Дуэль</h2>
+                <p class="text-gray-600 mt-3 text-lg">Теперь, когда мысль поймана, давай поставим её под сомнение и ослабим её хватку.</p>
+            </div>
+            
+            <div id="duel-arena" class="hidden-section bg-gray-50 p-6 rounded-xl space-y-6 text-center border border-gray-200">
+                <p class="text-gray-600 text-lg">Твоя мысль на дуэли:</p>
+                <div id="thought-on-display" class="bg-[#FFB344] text-[#4A2E00] font-extrabold p-4 rounded-lg text-2xl md:text-3xl transition-all duration-500 duel-question-text"></div>
+                
+                <div id="duel-questions" class="space-y-6">
+                    <div id="duel-q1" class="duel-question space-y-4">
+                        <h3 class="font-bold text-xl text-[#00A19D]">Вопрос 1: "Это Точно Правда?"</h3>
+                        <p class="text-gray-600">Вспомни хотя бы один случай, когда эта мысль НЕ сработала. Найди исключения, даже самые маленькие. Они доказывают, что убеждение не абсолютно.</p>
+                        <button class="duel-next-btn btn-secondary">Нашёл исключение!</button>
+                    </div>
+
+                    <div id="duel-q2" class="duel-question hidden space-y-4">
+                        <h3 class="font-bold text-xl text-[#00A19D]">Вопрос 2: "Мне Это Помогает?"</h3>
+                        <p class="text-gray-600">Как эта мысль влияет на твою жизнь? Она тебя поддерживает или тормозит? Что ты теряешь, цепляясь за неё? Готов ли отпустить её ради чего-то крутого?</p>
+                        <button class="duel-next-btn btn-secondary">Понял, что теряю!</button>
+                    </div>
+
+                    <div id="duel-q3" class="duel-question hidden space-y-4">
+                        <h3 class="font-bold text-xl text-[#00A19D]">Вопрос 3: "А Что, Если...?"</h3>
+                        <p class="text-gray-600">Вместо "Не справлюсь" скажи: "А что, если я справлюсь?". Вместо "Меня осудят" – "А что, если они поймут или поддержат?". Эта фраза открывает двери для новых, классных вариантов.</p>
+                        <button class="duel-next-btn btn-secondary">Открыл новые варианты!</button>
+                    </div>
+                </div>
+                
+                <div id="duel-complete-message" class="hidden space-y-4">
+                    <h3 class="font-bold text-2xl text-[#00A19D]">🥳 Дуэль завершена!</h3>
+                    <p class="text-gray-700 text-lg">Твоя старая мысль ослаблена. Теперь она не имеет над тобой такой власти!</p>
+                    <button onclick="document.getElementById('step3').scrollIntoView({ behavior: 'smooth' });" class="btn-primary text-lg px-10 py-4">Перейти к Шагу 3</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="step3" class="card p-8 md:p-12 space-y-8 opacity-50 pointer-events-none">
+            <div class="text-center">
+                <h2 class="text-4xl font-extrabold section-header">Шаг 3: Перепиши Свою Историю</h2>
+                <p class="text-gray-600 mt-3 text-lg">Теперь, когда старая программа ослаблена, пора создать новую, мощную и поддерживающую программу для твоего мозга.</p>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-6">
+                <h3 class="font-bold text-xl text-[#00A19D]">✍️ Создай Своё Новое Правило</h3>
+                <p class="text-gray-600">Переделай негативное убеждение в позитивное. Используй настоящее время, как будто это уже факт. Произнеси вслух, почувствуй, как оно откликается.</p>
+                <textarea id="new-belief-input" placeholder="Моё новое убеждение: Я легко знакомлюсь с новыми людьми!" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FFB344] focus:border-[#FFB344] transition h-32 text-lg"></textarea>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-6">
+                <h3 class="font-bold text-xl text-[#00A19D]">🚀 Внедряй Новое Правило в Жизнь (Даже По Чуть-Чуть!)</h3>
+                <p class="text-gray-600">Начни действовать так, **КАК БУДТО** твоё новое убеждение уже истинно. Маленькие шаги = Огромные победы!</p>
+                <div class="space-y-4" id="micro-actions-list">
+                    <label class="flex items-center space-x-3 text-lg">
+                        <input type="checkbox" class="form-checkbox h-6 w-6 text-[#00A19D] rounded focus:ring-[#FFB344]">
+                        <span>**Действуй "Как Будто":** Сделай что-то совсем крошечное, что подтверждает новое убеждение (улыбнись незнакомцу, выскажи небольшое мнение).</span>
+                    </label>
+                    <label class="flex items-center space-x-3 text-lg">
+                        <input type="checkbox" class="form-checkbox h-6 w-6 text-[#00A19D] rounded focus:ring-[#FFB344]">
+                        <span>**Твой "Якорь Уверенности":** Когда чувствуешь позитив, сделай особое движение (сожми кулак). Повторяй это! Потом используй якорь, когда нужна уверенность.</span>
+                    </label>
+                    <label class="flex items-center space-x-3 text-lg">
+                        <input type="checkbox" class="form-checkbox h-6 w-6 text-[#00A19D] rounded focus:ring-[#FFB344]">
+                        <span>**Постоянно "Напоминай Себе":** Запиши новое убеждение на диктофон и слушай. Напиши на стикере и читай вслух.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <p class="text-gray-700 text-lg mb-4">Ты сможешь! Просто переписываешь старые программки. Начни с малого, делай это постоянно. Твоя свобода уже близко!</p>
+                <button id="reset-app-btn" class="btn-primary text-lg px-10 py-4">Начать заново или поделиться!</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        let currentNegativeThought = "";
+        const negativeThoughtInput = document.getElementById('negative-thought-input');
+        const catchThoughtBtn = document.getElementById('catch-thought-btn');
+        const step1Details = document.getElementById('step1-details');
+        const errorMessage = document.getElementById('error-message');
+        
+        const step2Section = document.getElementById('step2');
+        const duelArena = document.getElementById('duel-arena');
+        const thoughtOnDisplay = document.getElementById('thought-on-display');
+        const duelQuestionsContainer = document.getElementById('duel-questions');
+        const duelQuestions = [
+            document.getElementById('duel-q1'),
+            document.getElementById('duel-q2'),
+            document.getElementById('duel-q3')
+        ];
+        const duelNextButtons = document.querySelectorAll('.duel-next-btn');
+        const duelCompleteMessage = document.getElementById('duel-complete-message');
+        
+        const step3Section = document.getElementById('step3');
+        const newBeliefInput = document.getElementById('new-belief-input');
+        const microActionsCheckboxes = document.querySelectorAll('#micro-actions-list input[type="checkbox"]');
+        const resetAppBtn = document.getElementById('reset-app-btn');
+
+        let currentDuelQuestionIndex = 0;
+        let thoughtOpacity = 1.0;
+
+        // Function to reset the entire application state
+        function resetApp() {
+            negativeThoughtInput.value = '';
+            step1Details.classList.remove('visible-section');
+            step1Details.classList.add('hidden-section');
+            errorMessage.style.display = 'none';
+
+            step2Section.classList.add('opacity-50', 'pointer-events-none');
+            duelArena.classList.remove('visible-section');
+            duelArena.classList.add('hidden-section');
+            thoughtOnDisplay.textContent = '';
+            thoughtOnDisplay.style.opacity = 1.0;
+            currentDuelQuestionIndex = 0;
+            duelQuestions.forEach((q, index) => {
+                q.classList.add('hidden');
+                if (index === 0) q.classList.remove('hidden');
+            });
+            duelQuestionsContainer.classList.remove('hidden'); // Ensure container is visible for new duel
+            duelCompleteMessage.classList.add('hidden');
+            duelCompleteMessage.classList.remove('visible-section');
+
+            step3Section.classList.add('opacity-50', 'pointer-events-none');
+            newBeliefInput.value = '';
+            microActionsCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        catchThoughtBtn.addEventListener('click', () => {
+            currentNegativeThought = negativeThoughtInput.value.trim();
+            if (currentNegativeThought) {
+                errorMessage.style.display = 'none'; // Hide error if input is valid
+                step1Details.classList.remove('hidden-section');
+                step1Details.classList.add('visible-section');
+                thoughtOnDisplay.textContent = currentNegativeThought;
+                
+                // Enable Step 2
+                step2Section.classList.remove('opacity-50', 'pointer-events-none');
+                duelArena.classList.remove('hidden-section');
+                duelArena.classList.add('visible-section');
+                thoughtOpacity = 1.0;
+                thoughtOnDisplay.style.opacity = thoughtOpacity;
+
+                // Reset duel for new thought
+                currentDuelQuestionIndex = 0;
+                duelQuestions.forEach((q, index) => {
+                    q.classList.add('hidden');
+                    if (index === 0) q.classList.remove('hidden');
+                });
+                duelQuestionsContainer.classList.remove('hidden'); // Make sure questions container is visible
+                duelCompleteMessage.classList.add('hidden');
+                duelCompleteMessage.classList.remove('visible-section'); // Ensure complete message is hidden
+            } else {
+                errorMessage.style.display = 'block'; // Show error message
+            }
+        });
+
+        duelNextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentDuelQuestionIndex < duelQuestions.length) {
+                    duelQuestions[currentDuelQuestionIndex].classList.add('hidden');
+                    thoughtOpacity -= 0.3; // Reduce opacity to fade the thought
+                    thoughtOnDisplay.style.opacity = Math.max(0.1, thoughtOpacity); // Ensure it doesn't go below 0.1
+                    currentDuelQuestionIndex++;
+
+                    if (currentDuelQuestionIndex < duelQuestions.length) {
+                        duelQuestions[currentDuelQuestionIndex].classList.remove('hidden');
+                    } else {
+                        duelQuestionsContainer.classList.add('hidden');
+                        duelCompleteMessage.classList.remove('hidden');
+                        duelCompleteMessage.classList.add('visible-section');
+                        // Enable Step 3
+                        step3Section.classList.remove('opacity-50', 'pointer-events-none');
+                    }
+                }
+            });
+        });
+
+        // Attach reset function to the "Начать заново" button
+        resetAppBtn.addEventListener('click', resetApp);
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initial state for sections on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            resetApp(); // Call reset to set initial state correctly
+        });
+
+    </script>
+</body>
+</html>
